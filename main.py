@@ -70,11 +70,89 @@ import numpy as np
 # array = np.dstack((array1, array2))
 # print(array)
 
-B = np.array([
-    [10, 20, 30, 40],
-    [50, 60, 70, 80],
-    [90, 100, 110, 120],
-    [130, 140, 150, 160]
-])
+# B = np.array([
+#     [10, 20, 30, 40],
+#     [50, 60, 70, 80],
+#     [90, 100, 110, 120],
+#     [130, 140, 150, 160]
+# ])
 
-print(B[0:2, 0:2])
+# print(B[0:2, 0:2])
+
+# arr = np.array([10, 20, 30, 40, 50, 60])
+
+# arr1 = np.delete(arr, 2)
+# print("Після видалення індексу 2:", arr1)
+
+# arr2 = np.delete(arr, [0, 3, 4])
+# print("Після видалення індексів 0, 3, 4:", arr2)
+
+# arr = np.random.randint(1, 21, 10)
+# print("Початковий масив:", arr)
+
+# indices = np.where(arr % 3 == 0)
+
+# new_arr = np.delete(arr, indices)
+
+# print("Масив без чисел, що діляться на 3:", new_arr)
+
+# Створіть двовимірний масив NumPy розміром 4x5 з
+# випадкових цілих чисел від 0 до 50.
+# Видаліть другий рядок та четвертий стовпець з цього масиву.
+# Виведіть отриманий масив.
+
+# arr = np.random.randint(0, 51, size=(4, 5))
+# print("Початковий масив:\n", arr)
+
+# arr = np.delete(arr, 1, axis=0)
+
+# arr = np.delete(arr, 3, axis=1)
+
+# print("\nОновлений масив:\n", arr)
+
+# arr = np.random.randint(1, 101, 20)
+# print("Початковий масив:")
+# print(arr)
+
+# unique_arr = []
+# for x in arr:
+#     if x not in unique_arr:
+#         unique_arr.append(x)
+
+# unique_arr = np.array(unique_arr)
+
+# print("Масив без повторів:")
+# print(unique_arr)
+
+A = np.array([[1, 4, 7],
+              [2, 5, 8],
+              [3, 6, 9]])
+B = np.array([[9, 6, 3],
+              [8, 5, 2],
+              [7, 4, 1]])
+
+AB = np.dot(A, B)
+BA = np.dot(B, A)
+
+print("A * B:")
+print(AB)
+
+print("\nB * A:")
+print(BA)
+
+try:
+    A_inv = np.linalg.inv(A)
+    print("\nОбернена матриця A:")
+    print(A_inv)
+except np.linalg.LinAlgError:
+    print("\nМатриця A не має оберненої (вироджена)")
+
+try:
+    B_inv = np.linalg.inv(B)
+    print("\nОбернена матриця B:")
+    print(B_inv)
+except np.linalg.LinAlgError:
+    print("\nМатриця B не має оберненої (вироджена)")
+
+print(A @ B)
+print(B @ A)

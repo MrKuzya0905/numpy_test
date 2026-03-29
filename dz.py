@@ -1,43 +1,31 @@
 import numpy as np
-
-arr1 = np.arange(10, 20)
-
-print("Завдання 1:")
-print("Масив:", arr1)
-print("Сума:", np.sum(arr1))
-print("Середнє:", np.mean(arr1))
-print("Мін:", np.min(arr1))
-print("Макс:", np.max(arr1))
+# task1
+# array1 = np.random.randint(-10, 11, (4, 4))
+# array2 = np.random.randint(-10, 11, (4, 4))
+# array3 = np.random.randint(-10, 11, (4, 4))
 
 
-arr2 = np.random.rand(1000)  
-print("\nЗавдання 2:")
-print("Сума:", np.sum(arr2))
-print("Середнє:", np.mean(arr2))
-print("Мін:", np.min(arr2))
-print("Макс:", np.max(arr2))
+# combined_array = np.stack((array1, array2, array3))
 
 
-arr3 = np.random.randint(0, 100, (5, 5))
+# print("Об'єднаний масив з новою віссю:\n", combined_array)
 
-print("\nЗавдання 3:")
-print("Масив:\n", arr3)
+# assert combined_array.shape == (3, 4, 4)
 
+#task2
+# B = np.random.randint(1, 10, (2, 3, 4))
+# print("Оригінальний тривимірний масив B:\n", B)
+# B_reshaped = B.reshape(6, 4)
+# print("Масив після зміни форми:\n", B_reshaped)
+# B_flattened = B.flatten()
+# print("Одновимірний масив:\n", B_flattened)
 
-print("Другий стовпець:", arr3[:, 1])
-
-print("Другий рядок:", arr3[1, :])
-
-
-flattened = arr3.flatten()
-print("Одномірний масив:", flattened)
-
-
-
-arr4 = np.random.rand(500000)
-
-print("\nЗавдання 4:")
-print("Сума:", np.sum(arr4))
-print("Середнє:", np.mean(arr4))
-print("Мін:", np.min(arr4))
-print("Макс:", np.max(arr4))
+#task3
+C = np.random.randint(1, 10, (3, 3, 3))
+print("Оригінальний масив C:\n", C)
+sum_axis0 = np.sum(C, axis=0)
+print("Сума по осі 0:\n", sum_axis0)
+sum_axis1 = np.sum(C, axis=1)
+print("Сума по осі 1:\n", sum_axis1)
+total_sum = np.sum(C)
+print("Загальна сума елементів масиву:", total_sum)
