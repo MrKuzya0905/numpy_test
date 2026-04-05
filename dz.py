@@ -1,31 +1,55 @@
 import numpy as np
-# task1
-# array1 = np.random.randint(-10, 11, (4, 4))
-# array2 = np.random.randint(-10, 11, (4, 4))
-# array3 = np.random.randint(-10, 11, (4, 4))
 
 
-# combined_array = np.stack((array1, array2, array3))
+# Завдання 1
+
+array = np.array([12, -5, 7, 9, -3, 15])
+array_new = np.append(array, 10)
+print(array_new)
 
 
-# print("Об'єднаний масив з новою віссю:\n", combined_array)
 
-# assert combined_array.shape == (3, 4, 4)
+# Завдання 2
 
-#task2
-# B = np.random.randint(1, 10, (2, 3, 4))
-# print("Оригінальний тривимірний масив B:\n", B)
-# B_reshaped = B.reshape(6, 4)
-# print("Масив після зміни форми:\n", B_reshaped)
-# B_flattened = B.flatten()
-# print("Одновимірний масив:\n", B_flattened)
+matrix = np.array([
+    [5, 2, 8],
+    [1, 7, 4],
+    [3, 6, 9]
+])
 
-#task3
-C = np.random.randint(1, 10, (3, 3, 3))
-print("Оригінальний масив C:\n", C)
-sum_axis0 = np.sum(C, axis=0)
-print("Сума по осі 0:\n", sum_axis0)
-sum_axis1 = np.sum(C, axis=1)
-print("Сума по осі 1:\n", sum_axis1)
-total_sum = np.sum(C)
-print("Загальна сума елементів масиву:", total_sum)
+matrix_new = np.delete(matrix, 1, axis=0)
+print(matrix_new)
+
+
+
+# Завдання 3
+conversions = np.array([50, 65, 80, 45, 70, 90, 55, 85, 60, 75])
+
+print("\nЗавдання 3:")
+print("Масив:", conversions)
+
+
+median = np.median(conversions)
+variance = np.var(conversions)
+std_dev = np.std(conversions)
+
+print("Медіана:", median)
+print("Дисперсія:", variance)
+print("Стандартне відхилення:", std_dev)
+
+
+uniform = np.random.uniform(0, 100, 10)   
+integers = np.random.randint(0, 100, 10)    
+real = np.random.rand(10) * 100            
+normal = np.random.normal(50, 10, 10)       
+
+combined = np.concatenate([conversions, uniform, integers, real, normal])
+
+mean_value = np.mean(combined)
+
+print("Середнє значення:", mean_value)
+
+if mean_value > 2000:
+    print("Середнє більше за 2000")
+else:
+    print("Середнє НЕ більше за 2000")
