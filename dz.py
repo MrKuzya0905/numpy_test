@@ -1,55 +1,58 @@
 import numpy as np
+import pandas as pd 
 
 
 # Завдання 1
 
-array = np.array([12, -5, 7, 9, -3, 15])
-array_new = np.append(array, 10)
-print(array_new)
+data = {
+    'Name': ['Alex', 'Bella', 'Chris'],
+    'Age': [30, 25, 35],
+    'City': ['Kyiv', 'Lviv', 'Odesa']
+}
+df = pd.DataFrame(data)
 
+df['Salary'] = [50000, 60000, 55000]
 
+df = df.drop('Age', axis=1)
+
+new_diana = pd.DataFrame({'Name': ['Diana'], 'City': ['Dnipro'], 'Salary': [58000]})
+df = pd.concat([df, new_diana], ignore_index=True)
+
+df = df.drop(0, axis=0)
+
+df['Department'] = 'Sales'
+
+df = df.drop('Salary', axis=1)
+
+print(df)
 
 # Завдання 2
 
-matrix = np.array([
-    [5, 2, 8],
-    [1, 7, 4],
-    [3, 6, 9]
-])
+data = {
+    'Product': ['Book', 'Pen', 'Notebook'],
+    'Price': [15, 2, 5],
+    'Stock': [100, 500, 200]
+}
 
-matrix_new = np.delete(matrix, 1, axis=0)
-print(matrix_new)
+df = pd.DataFrame(data)
 
+df['Discount'] = '10%'
 
+df = df.drop(columns=['Stock'])
 
-# Завдання 3
-conversions = np.array([50, 65, 80, 45, 70, 90, 55, 85, 60, 75])
+new_row = pd.DataFrame([{
+    'Product': 'Pencil',
+    'Price': 1,
+    'Discount': '5%'
+}])
 
-print("\nЗавдання 3:")
-print("Масив:", conversions)
+df = pd.concat([df, new_row], ignore_index=True)
 
+df = df.drop(index=1)
 
-median = np.median(conversions)
-variance = np.var(conversions)
-std_dev = np.std(conversions)
+df['Supplier'] = 'Stationery Co.'
 
-print("Медіана:", median)
-print("Дисперсія:", variance)
-print("Стандартне відхилення:", std_dev)
+df = df.drop(index=2)
 
+print(df)
 
-uniform = np.random.uniform(0, 100, 10)   
-integers = np.random.randint(0, 100, 10)    
-real = np.random.rand(10) * 100            
-normal = np.random.normal(50, 10, 10)       
-
-combined = np.concatenate([conversions, uniform, integers, real, normal])
-
-mean_value = np.mean(combined)
-
-print("Середнє значення:", mean_value)
-
-if mean_value > 2000:
-    print("Середнє більше за 2000")
-else:
-    print("Середнє НЕ більше за 2000")
