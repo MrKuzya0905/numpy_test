@@ -5,54 +5,49 @@ import pandas as pd
 # Завдання 1
 
 data = {
-    'Name': ['Alex', 'Bella', 'Chris'],
-    'Age': [30, 25, 35],
-    'City': ['Kyiv', 'Lviv', 'Odesa']
+    'Product': ['Laptop', 'Smartphone', 'Tablet'],
+    'Price': [1200, 800, 400],
+    'Stock': [50, 150, 200]
 }
 df = pd.DataFrame(data)
-
-df['Salary'] = [50000, 60000, 55000]
-
-df = df.drop('Age', axis=1)
-
-new_diana = pd.DataFrame({'Name': ['Diana'], 'City': ['Dnipro'], 'Salary': [58000]})
-df = pd.concat([df, new_diana], ignore_index=True)
-
-df = df.drop(0, axis=0)
-
-df['Department'] = 'Sales'
-
-df = df.drop('Salary', axis=1)
-
-print(df)
-
-# Завдання 2
-
-data = {
-    'Product': ['Book', 'Pen', 'Notebook'],
-    'Price': [15, 2, 5],
-    'Stock': [100, 500, 200]
-}
-
-df = pd.DataFrame(data)
-
-df['Discount'] = '10%'
-
-df = df.drop(columns=['Stock'])
 
 new_row = pd.DataFrame([{
-    'Product': 'Pencil',
-    'Price': 1,
-    'Discount': '5%'
+    'Product': 'USB Hub',
+    'Price': 40,
+    'Stock': 150,
+    'Warranty': '2 years'
 }])
 
 df = pd.concat([df, new_row], ignore_index=True)
 
-df = df.drop(index=1)
+print(df)
+# Завдання 2
 
-df['Supplier'] = 'Stationery Co.'
+data = {
+    'Product': ['Laptop', 'Smartphone', 'Tablet'],
+    'Price': [1200, 800, 400],
+    'Stock': [50, 150, 200]
+}
+df = pd.DataFrame(data)
 
-df = df.drop(index=2)
+new_row = pd.DataFrame([{
+    'Product': 'USB Hub',
+    'Price': 'Forty',  
+    'Stock': 150
+}])
+
+df = pd.concat([df, new_row], ignore_index=True)
 
 print(df)
 
+#Завдання 3
+
+df = pd.read_csv("customer_feedback.csv")
+
+grouped = df.groupby(['Region', 'Month'])['Rating'].mean()
+
+table = grouped.unstack()
+
+table_filled = table.fillna(table.mean().mean())
+
+print(table_filled)
