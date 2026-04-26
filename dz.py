@@ -1,53 +1,57 @@
 import numpy as np
 import pandas as pd 
+import seaborn as sns
+import matplotlib.pyplot as plt
 
+# Task 1
 
-# Завдання 1
+weeks = ['Тиждень 1', 'Тиждень 2', 'Тиждень 3', 'Тиждень 4']
 
-data = {
-    'Product': ['Laptop', 'Smartphone', 'Tablet'],
-    'Price': [1200, 800, 400],
-    'Stock': [50, 150, 200]
-}
-df = pd.DataFrame(data)
+traffic = [1500, 1600, 1700, 1800]
 
-new_row = pd.DataFrame([{
-    'Product': 'USB Hub',
-    'Price': 40,
-    'Stock': 150,
-    'Warranty': '2 years'
-}])
+sales_product_a = [300, 350, 400, 450]
+sales_product_b = [200, 250, 300, 350]
+sales_product_c = [100, 150, 200, 250]
 
-df = pd.concat([df, new_row], ignore_index=True)
+plt.figure(figsize=(10, 6))
+plt.plot(weeks, traffic, label='Трафік', linestyle='-', marker='o')
+plt.plot(weeks, sales_product_a, label='Продукт A', linestyle='--', marker='s')
+plt.plot(weeks, sales_product_b, label='Продукт B', linestyle='-.', marker='^')
+plt.plot(weeks, sales_product_c, label='Продукт C', linestyle=':', marker='d')
 
-print(df)
-# Завдання 2
+plt.title('Щотижнева активність трафіку та продажів')
+plt.xlabel('Тижні')
+plt.ylabel('Кількість')
+plt.legend()
+plt.grid()
 
-data = {
-    'Product': ['Laptop', 'Smartphone', 'Tablet'],
-    'Price': [1200, 800, 400],
-    'Stock': [50, 150, 200]
-}
-df = pd.DataFrame(data)
+plt.show()
 
-new_row = pd.DataFrame([{
-    'Product': 'USB Hub',
-    'Price': 'Forty',  
-    'Stock': 150
-}])
+# Task 2
 
-df = pd.concat([df, new_row], ignore_index=True)
+x = np.linspace(0, 10, 1000)
+y = np.sin(x) * np.cos(x)
 
-print(df)
+plt.figure(figsize=(12, 6))
+plt.plot(x, y)
 
-#Завдання 3
+plt.title('Графік функції y = sin(x) * cos(x)')
+plt.xlabel('x')
+plt.ylabel('y')
 
-df = pd.read_csv("customer_feedback.csv")
+plt.tight_layout()
+plt.show()
 
-grouped = df.groupby(['Region', 'Month'])['Rating'].mean()
+# Task 3
 
-table = grouped.unstack()
+sizes = [50, 25, 15, 10]
+labels = ['Продажі', 'Інвестиції', 'Ліцензії', 'Інше']
 
-table_filled = table.fillna(table.mean().mean())
+plt.pie(
+    sizes,
+    labels=labels,
+    colors=['#FF9999', '#66B3FF', '#99FF99', '#FFCC99']
+)
 
-print(table_filled)
+plt.title("Кольори сегментів")
+plt.show()

@@ -1,139 +1,159 @@
 import pandas as pd 
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-# grades = np.random.randint(0, 12, size=(25, 10))
-# df = pd.DataFrame(grades, columns=["Math", "History", "English", "Literature", "Physics", "Ukrainian", "Biology", "PE", "Chemistry", "Geography"])
-# print(df)
-
-# data = {
-#     'Name': ['Anna', 'Boris', 'Clara', 'Diana'],
-#     'Age': [28, 34, 29, 42],
-#     'City': ['Kyiv', 'Lviv', 'Odesa', 'Dnipro']
-# }
-
-# df = pd.DataFrame(data)
-# print(df.loc[df["Age"] > 20], "Name")
-
-# Створіть двовимірний NumPy масив розміру 4x2 з випадковими
-# числами з нормальним розподілом (середнє=50, стандартне відхилення=5).
-# Перетворіть цей масив на DataFrame з назвами стовпців ['Height', 'Weight'
-
-# data = np.random.normal(loc=50, scale=5, size=(4, 2))
-# df = pd.DataFrame(data, columns=['Height', 'Weight'])
-# print(df)
-
-
-# Створіть словник з наступними ключами та значеннями:
-# 'Product': ['Laptop', 'Smartphone', 'Tablet']
-# 'Price': [1200, 800, 400]
-# 'Stock': [50, 150, 200]
-# Перетворіть цей словник на DataFrame.
-
-# data = {
-#     'Product': ['Laptop', 'Smartphone', 'Tablet'],
-#     'Price': [1200, 800, 400],
-#     'Stock': [50, 150, 200]
-# }
-# df = pd.DataFrame(data)
-# print(df)
-
-# Створіть список списків, де кожний внутрішній список
-# містить дані про студентів: ім'я, вік та оцінку.
-# Перетворіть цей список на DataFrame з назвами стовпців ['Name', 'Age', 'Score'].
-# data = [
-#     ['John', 22, 88],
-#     ['Alice', 23, 92],
-#     ['Bob', 24, 75]
-# ]
-
-# data = {
-#     'Product': ['Laptop', 'Smartphone', 'Tablet'],
-#     'Price': [1200, 800, 400],
-#     'Stock': [50, 150, 200]
-# }
-
-# df = pd.DataFrame(data)
-
-# df["Category"] = "Electronics"
-
-# df["New_Price"] = df["Price"] * 1.2
-
-# df['Level'] = np.where(df['Price'] < 800, 'low', 'high')
-
-# print(df)
-
-# data = {
-#     'Product': ['Laptop', 'Smartphone', 'Tablet'],
-#     'Price': [1200.50, 800.75, 400.20],
-#     'Stock': [50, 150, 200]
-# }
-# df = pd.DataFrame(data)
-# df["Price"] = df["Price"].astype(int)
-# print(df)
-
-# data = {
-#     'Event': ['Conference', 'Meeting', 'Workshop'],
-#     'Date': ['2024-05-21', '2024-06-15', '2024-07-10']
-# }
-
-# data = {
-#     'Name': ['Alex', 'Bella', 'Chris'],
-#     'Age': [30, 25, 35],
-#     'City': ['Kyiv', 'Lviv', 'Odesa']
-# }
-# # Перейменуйте стовпці 'Name' на 'Employee Name' та 'City' на 'Location'.
-
-# df = pd.DataFrame(data)
-
-# df.rename(columns=
-#           {
-#               "Name": "Employee Name",
-#               'City': 'Location'
-#           }, inplace=True)
-# print(df)
-
-# data = {
-#     'Department': ['Sales', 'Engineering', 'Sales', 'HR', 'Engineering', 'HR', 'Sales'],
-#     'Employee': ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace'],
-#     'Salary': [70000, 80000, 75000, 60000, 82000, 58000, 72000],
-#     'Region': ['North', 'South', 'North', 'East', 'South', 'East', 'West']
-# }
-
-# df = pd.DataFrame(data)
-# grouped_data = df.groupby(['Department', 'Region'])
-# agg = grouped_data.agg(
-#     total_salary=("Salary", "sum"),
-#     mean_salary=("Salary", "mean"),
-#     employee_count=('Employee', "count"),
-#     min_salary=("Salary", "min"),
-#     max_salary=("Salary", "max"),
-# )
-# # print(agg)
-# import matplotlib.pyplot as plt
-
-# agg["mean_salary"].plot(kind="bar", color="skyblue")
+# tips = sns.load_dataset("tips")
+# sns.histplot(data=tips, x="total_bill")
 # plt.show()
 
-# df = pd.read_csv('2.csv')
+# data = {
+#     'Date': [
+#         '2023-01-01', '2023-01-01', '2023-01-02', '2023-01-02', '2023-01-03',
+#         '2023-01-04', '2023-01-04', '2023-01-05', '2023-01-05', '2023-01-06',
+#         '2023-02-01', '2023-02-01', '2023-02-02', '2023-02-02', '2023-02-03',
+#         '2023-02-04', '2023-02-04', '2023-02-05', '2023-02-05', '2023-02-06'
+#     ],
+#     'Product': [
+#         'Smartphone', 'Laptop', 'Tablet', 'Headphones', 'Smartwatch',
+#         'Smartphone', 'Laptop', 'Tablet', 'Headphones', 'Smartwatch',
+#         'Smartphone', 'Laptop', 'Tablet', 'Headphones', 'Smartwatch',
+#         'Smartphone', 'Laptop', 'Tablet', 'Headphones', 'Smartwatch'
+#     ],
+#     'Category': [
+#         'Mobile Devices', 'Computers', 'Mobile Devices', 'Accessories', 'Accessories',
+#         'Mobile Devices', 'Computers', 'Mobile Devices', 'Accessories', 'Accessories',
+#         'Mobile Devices', 'Computers', 'Mobile Devices', 'Accessories', 'Accessories',
+#         'Mobile Devices', 'Computers', 'Mobile Devices', 'Accessories', 'Accessories'
+#     ],
+#     'Region': [
+#         'North', 'South', 'East', 'West', 'North',
+#         'South', 'East', 'West', 'North', 'South',
+#         'East', 'West', 'North', 'South', 'East',
+#         'West', 'North', 'South', 'East', 'West'
+#     ],
+#     'Sales': [
+#         50, 30, 20, 100, 40,
+#         60, 25, 35, 80, 45,
+#         55, 40, 25, 90, 50,
+#         65, 35, 30, 100, 55
+#     ],
+#     'Revenue': [
+#         25000, 45000, 10000, 10000, 20000,
+#         30000, 37500, 17500, 8000, 22500,
+#         27500, 60000, 12500, 9000, 25000,
+#         32500, 52500, 15000, 10000, 27500
+#     ]
+# }
+# data = {
+#     'Date': [
+#         '2023-01-01', '2023-01-01', '2023-01-02', '2023-01-02', '2023-01-03',
+#         '2023-01-04', '2023-01-04', '2023-01-05', '2023-01-05', '2023-01-06',
+#         '2023-02-01', '2023-02-01', '2023-02-02', '2023-02-02', '2023-02-03',
+#         '2023-02-04', '2023-02-04', '2023-02-05', '2023-02-05', '2023-02-06'
+#     ],
+#     'Product': [
+#         'Smartphone', 'Laptop', 'Tablet', 'Headphones', 'Smartwatch',
+#         'Smartphone', 'Laptop', 'Tablet', 'Headphones', 'Smartwatch',
+#         'Smartphone', 'Laptop', 'Tablet', 'Headphones', 'Smartwatch',
+#         'Smartphone', 'Laptop', 'Tablet', 'Headphones', 'Smartwatch'
+#     ],
+#     'Category': [
+#         'Mobile Devices', 'Computers', 'Mobile Devices', 'Accessories', 'Accessories',
+#         'Mobile Devices', 'Computers', 'Mobile Devices', 'Accessories', 'Accessories',
+#         'Mobile Devices', 'Computers', 'Mobile Devices', 'Accessories', 'Accessories',
+#         'Mobile Devices', 'Computers', 'Mobile Devices', 'Accessories', 'Accessories'
+#     ],
+#     'Region': [
+#         'North', 'South', 'East', 'West', 'North',
+#         'South', 'East', 'West', 'North', 'South',
+#         'East', 'West', 'North', 'South', 'East',
+#         'West', 'North', 'South', 'East', 'West'
+#     ],
+#     'Sales': [
+#         50, 30, 20, 100, 40,
+#         60, 25, 35, 80, 45,
+#         55, 40, 25, 90, 50,
+#         65, 35, 30, 100, 55
+#     ],
+#     'Revenue': [
+#         25000, 45000, 10000, 10000, 20000,
+#         30000, 37500, 17500, 8000, 22500,
+#         27500, 60000, 12500, 9000, 25000,
+#         32500, 52500, 15000, 10000, 27500
+#     ]
+# }
+# df = pd.DataFrame(data)
 
-# df['Date'] = pd.to_datetime(df['Date'])
+# # sns.countplot(x=None, y=None, hue=None, data=None, order=None, hue_order=None,
+# #               orient=None, color=None, palette=None, saturation=0.75, dodge=True, ax=None, **kwargs)
 
-# df['Temperature'] = pd.to_numeric(df['Temperature'], errors="coerce")
+# sns.countplot(data=df, x="Category", palette="Set2", hue="Category", legend=False)
+# plt.xlabel("category")
+# plt.ylabel("sales")
+# plt.show()
 
-# df = df.dropna()
 
-# df['Temperature'] = df['Temperature'].astype(int)
+# tips = sns.load_dataset("tips")
 
-# print(df)
+# sns.barplot(
+#     data=tips,
+#     x="day",
+#     y="total_bill",
+#     hue="time",
+#     palette="deep"
+# )
+# plt.title("Середній рахунок за днями тижня")
+# plt.xlabel("День тижня")
+# plt.ylabel("Сума рахунку")
+# plt.legend(title="Час Прийому Їжі")
+# plt.show()
 
-data = {
-    'Department': ['Sales', 'Engineering', 'Sales', 'HR', 'Engineering', 'HR', 'Sales'],
-    'Region': ['North', 'South', 'North', 'East', 'South', 'East', 'West'],
-    'Sales': [1200, 1500, 800, 600, 1600, 750, 900],
-    'Quantity': [10, 15, 8, 5, 20, 7, 9]
-}
-df = pd.DataFrame(data)
-grouped_data = df.groupby(['Department', 'Region'])
-agg = grouped_data.agg(
-    
-)
+# tips = sns.load_dataset("tips")
+
+# sns.barplot(
+#     data=tips,
+#     x="day",
+#     y="total_bill",
+#     estimator=np.sum,
+#     palette="coolwarm"
+# )
+
+# plt.title("Загальна сума рахунків за днями тижня")
+# plt.xlabel("День тижня")
+# plt.ylabel("Сума рахунків")
+# plt.show()
+
+
+# df = sns.load_dataset("penguins")
+# # sns.barplot(data=df, x="species", y="body_mass_g", palette="Set2", hue="sex", legend=False)
+# # plt.show()
+
+# sns.kdeplot(df, hist=True, kde=True)
+# plt.xlabel("Mass")
+# plt.ylabel("Count")
+# plt.show()
+
+# df = sns.load_dataset('tips')
+# sns.distplot(df['total_bill'], bins=20, kde=False, color='blue', rug=True)
+# plt.title('Розподіл Суми Рахунку')
+# plt.xlabel('Сума Рахунку (USD)')
+# plt.ylabel('Кількість Спостережень')
+# plt.show()
+
+# df = sns.load_dataset('tips')
+# sns.distplot(df['total_bill'], bins=25, kde=True, color='green')
+# plt.title('Розподіл Суми Рахунку з KDE')
+# plt.xlabel('Сума Рахунку (USD)')
+# plt.ylabel('Щільність Ймовірності')
+# plt.show()
+from matplotlib.colors import LinearSegmentedColormap
+
+df = sns.load_dataset('penguins')
+df = df.select_dtypes(include=[int, float])
+corr = df.corr()
+colors = ["#ff0000", "#ffffff", "#0000ff"]
+custom_cmap = LinearSegmentedColormap.from_list("CustomMap", colors, N=100)
+sns.heatmap(corr, annot=True, cmap=custom_cmap, linewidths=0.5)
+plt.title('Кореляційна Матриця з Власною Кольоровою Шкалою')
+plt.show()
