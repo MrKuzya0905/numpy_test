@@ -1,57 +1,47 @@
-import numpy as np
 import pandas as pd 
+import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+import missingno as msno
+from sklearn.impute import SimpleImputer
 
 # Task 1
 
-weeks = ['Тиждень 1', 'Тиждень 2', 'Тиждень 3', 'Тиждень 4']
+df = sns.load_dataset('tips')
 
-traffic = [1500, 1600, 1700, 1800]
+sns.histplot(data=df, x='total_bill', bins=20, kde=True, hue='smoker')
 
-sales_product_a = [300, 350, 400, 450]
-sales_product_b = [200, 250, 300, 350]
-sales_product_c = [100, 150, 200, 250]
-
-plt.figure(figsize=(10, 6))
-plt.plot(weeks, traffic, label='Трафік', linestyle='-', marker='o')
-plt.plot(weeks, sales_product_a, label='Продукт A', linestyle='--', marker='s')
-plt.plot(weeks, sales_product_b, label='Продукт B', linestyle='-.', marker='^')
-plt.plot(weeks, sales_product_c, label='Продукт C', linestyle=':', marker='d')
-
-plt.title('Щотижнева активність трафіку та продажів')
-plt.xlabel('Тижні')
-plt.ylabel('Кількість')
-plt.legend()
-plt.grid()
-
+plt.title('Розподіл Суми Рахунку за Категорією Курців')
+plt.xlabel('Сума Рахунку (USD)')
+plt.ylabel('Щільність Ймовірності')
+plt.legend(title='Smoker')
 plt.show()
 
 # Task 2
 
-x = np.linspace(0, 10, 1000)
-y = np.sin(x) * np.cos(x)
+df = sns.load_dataset('tips')
 
-plt.figure(figsize=(12, 6))
-plt.plot(x, y)
+sns.histplot(
+    data=df,
+    x='total_bill',
+    bins=20,
+    kde=True,
+    color='brown',
+    alpha=0.7,
+    kde_kws={'linewidth': 3}
+)
 
-plt.title('Графік функції y = sin(x) * cos(x)')
-plt.xlabel('x')
-plt.ylabel('y')
-
-plt.tight_layout()
+plt.title('Розподіл Суми Рахунку з Налаштуваннями Графіка')
+plt.xlabel('Сума Рахунку (USD)')
+plt.ylabel('Щільність Ймовірності')
 plt.show()
 
 # Task 3
 
-sizes = [50, 25, 15, 10]
-labels = ['Продажі', 'Інвестиції', 'Ліцензії', 'Інше']
-
-plt.pie(
-    sizes,
-    labels=labels,
-    colors=['#FF9999', '#66B3FF', '#99FF99', '#FFCC99']
-)
-
-plt.title("Кольори сегментів")
+df = sns.load_dataset('penguins')
+for col in df.select_dtypes(include='object').columns:
+    df[col] = df[col].astype('category').cat.codes
+corr = df.corr()
+sns.heatmap(corr, annot=True, cmap='coolwarm')
+plt.title('Кореляційна Матриця (з урахуванням категорій)')
 plt.show()

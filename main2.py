@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+import missingno as msno
+from sklearn.impute import SimpleImputer
 
 # tips = sns.load_dataset("tips")
 # sns.histplot(data=tips, x="total_bill")
@@ -147,13 +149,119 @@ import matplotlib.pyplot as plt
 # plt.xlabel('Сума Рахунку (USD)')
 # plt.ylabel('Щільність Ймовірності')
 # plt.show()
-from matplotlib.colors import LinearSegmentedColormap
+# from matplotlib.colors import LinearSegmentedColormap
 
-df = sns.load_dataset('penguins')
-df = df.select_dtypes(include=[int, float])
-corr = df.corr()
-colors = ["#ff0000", "#ffffff", "#0000ff"]
-custom_cmap = LinearSegmentedColormap.from_list("CustomMap", colors, N=100)
-sns.heatmap(corr, annot=True, cmap=custom_cmap, linewidths=0.5)
-plt.title('Кореляційна Матриця з Власною Кольоровою Шкалою')
-plt.show()
+# df = sns.load_dataset('penguins')
+# df = df.select_dtypes(include=[int, float])
+# corr = df.corr()
+# colors = ["#ff0000", "#ffffff", "#0000ff"]
+# custom_cmap = LinearSegmentedColormap.from_list("CustomMap", colors, N=100)
+# sns.heatmap(corr, annot=True, cmap=custom_cmap, linewidths=0.5)
+# plt.title('Кореляційна Матриця з Власною Кольоровою Шкалою')
+# plt.show()
+
+# df = pd.read_csv("data.csv")
+# # # print(df.isnull().count)
+# # msno.matrix(df, figsize=(12, 8))
+# # median_val = df["Salary"].median()
+# df["Age"] = df["Age"].ffill(inplace=True)
+# print(df)
+
+# url = 'https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv'
+# df = pd.read_csv(url)
+
+# df = pd.read_csv('data.csv')
+# missing_values = df.isnull().sum()
+
+# print(missing_values)
+# df = pd.read_csv('data.csv')
+# median_salary = df['Salary'].median()
+
+# df['Salary'] = df['Salary'].fillna(median_salary)
+
+# print(df['Salary'].head())
+# pd.DataFrame.replace(to_replace, value, inplace=False, limit=None, regex=False, method='pad')
+# pd.DataFrame.replace({"to_replace": "value"})
+# pd.DataFrame("^\+380\d{9}$", "phone_number", regex=True)
+
+# data = {'Status': ['Single', 'Married', 'Single', 'Divorced']}
+# df = pd.DataFrame(data)
+# df.replace({
+#     "Single": 1,
+#     "Married": 2,
+#     "Divorced": 3
+# }, inplace=True)
+# print(df)
+
+# data = {'Comments': ['Good product', 'bad quality', 'average', 'excellent']}
+# df = pd.DataFrame(data)
+# df.replace("^bad.+", "poor", inplace=True, regex=True)
+# print(df)
+
+# df1 = pd.DataFrame({
+#     'A': ['A0', 'A1', 'A2'],
+#     'B': ['B0', 'B1', 'B2']
+# })
+# df2 = pd.DataFrame({
+#     'C': ['C0', 'C1', 'C2'],
+#     'D': ['D0', 'D1', 'D2']
+# })
+# df = pd.concat([df1, df2], axis=1)
+# print(df)
+
+# df1 = pd.DataFrame({
+#     'ProductID': [1, 2, 3],
+#     'Category': ['Electronics', 'Home Appliances', 'Electronics'],
+#     'Price': [699, 1200, 850]
+# })
+# df2 = pd.DataFrame({
+#     'ProductID': [4, 5],
+#     'Category': ['Furniture', 'Electronics'],
+#     'Price': [500, 650]
+# })
+# df = pd.concat([df1, df2], axis=0, ignore_index=False)
+# print(df)
+
+# df1 = pd.DataFrame({
+#     'ProductID': [1, 2, 3],
+#     'Category': ['Electronics', 'Home Appliances', 'Electronics']
+# })
+# df2 = pd.DataFrame({
+#     'Price': [699, 1200, 850],
+#     'Availability': ['In Stock', 'Out of Stock', 'In Stock']
+# })
+# df = pd.concat([df1, df2], axis=1)
+# print(df)
+
+# df1 = pd.DataFrame({
+#     'ProductID': [1, 2, 3],
+#     'Category': ['Electronics', 'Home Appliances', 'Electronics']
+# })
+# df2 = pd.DataFrame({
+#     'ProductID': [4, 5],
+#     'Price': [500, 650]
+# })
+# df = pd.concat([df1, df2], axis=0, join="outer")
+# print(df)
+
+sales_q1 = pd.DataFrame({
+    'ProductID': [101, 102, 103],
+    'Sales': [250, 150, 300]
+})
+sales_q2 = pd.DataFrame({
+    'ProductID': [104, 105],
+    'Sales': [200, 350]
+})
+result = pd.concat([sales_q1, sales_q2], axis=0, ignore_index=True)
+print(result)
+
+df1 = pd.DataFrame({
+    'EmployeeID': [1, 2, 3],
+    'Name': ['Alice', 'Bob', 'Charlie']
+})
+df2 = pd.DataFrame({
+    'EmployeeID': [4, 5],
+    'Name': ['David', 'Eva']
+})
+result = pd.concat([df1, df2], axis=0, ignore_index=True)
+print(result)
